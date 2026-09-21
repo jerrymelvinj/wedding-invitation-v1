@@ -36,7 +36,7 @@ export default function FloatingNav() {
   };
 
   const handleRSVP = () => {
-    window.open("https://wa.me/918248604075?text=Hi%20Melvin%20%26%20Nikitha!%20We%20received%20your%20invitation%20and%20would%20love%20to%20attend%20the%20wedding.%20Guest%20count:%20", '_blank');
+    window.open("https://wa.me/918248604075?text=Hi%20Melvin%20%26%20Nikitha!%20We%20received%20your%20invitation%20and%20would%20love%20to%20attend%20the%20wedding.%20Guest%20count:%20[2]", '_blank');
   };
 
   const openMap = () => {
