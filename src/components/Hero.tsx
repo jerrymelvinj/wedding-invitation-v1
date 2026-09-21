@@ -9,6 +9,7 @@ interface HeroProps {
   blessingText: string;
   invitationNote: string;
   heroImage: string;
+  heroImage2?: string;
   textClass?: string;
   accentClass?: string;
   frameClass?: string;
@@ -20,6 +21,7 @@ export default function Hero({
   blessingText,
   invitationNote,
   heroImage,
+  heroImage2,
   textClass = "text-kumkum",
   accentClass = "text-gold",
   frameClass = "border-cream shadow-[0_20px_40px_-15px_rgba(62,23,27,0.4)]"
@@ -30,11 +32,15 @@ export default function Hero({
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // Standard parallax for single image
+  const singleImageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  // Dual image scroll up transition (slides from 0% to -50% to reveal the second image underneath)
+  const dualImageY = useTransform(scrollYProgress, [0, 0.8], ["0%", "-50%"]);
+
   return (
-    <section ref={containerRef} className="relative min-h-[110vh] flex flex-col items-center pt-24 px-6 overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[110vh] flex flex-col items-center pt-32 px-6 overflow-hidden">
       {/* Editorial typography reveal */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -56,14 +62,33 @@ export default function Hero({
       {/* Parallax Arched Portrait */}
       <div className={`relative w-full max-w-sm aspect-[3/4] mx-auto rounded-t-full overflow-hidden border-4 z-10 ${frameClass}`}>
         <motion.div 
-          style={{ y, opacity }}
-          className="absolute inset-[-10%] w-[120%] h-[120%]"
+          style={{ y: heroImage2 ? dualImageY : singleImageY, opacity }}
+          className={`absolute inset-[-10%] w-[120%] ${heroImage2 ? "h-[220%]" : "h-[120%]"}`}
         >
-          <img 
-            src={heroImage} 
-            alt="Couple Portrait" 
-            className="w-full h-full object-cover object-center"
-          />
+          {heroImage2 ? (
+            <div className="w-full h-full flex flex-col">
+              <div className="w-full h-1/2">
+                <img 
+                  src={heroImage} 
+                  alt="Couple Portrait" 
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+              <div className="w-full h-1/2">
+                <img 
+                  src={heroImage2} 
+                  alt="Venue / Cathedral" 
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
+          ) : (
+            <img 
+              src={heroImage} 
+              alt="Couple Portrait" 
+              className="w-full h-full object-cover object-center"
+            />
+          )}
         </motion.div>
       </div>
     </section>

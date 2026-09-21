@@ -1,15 +1,16 @@
 import { WeddingInviteData } from "./types";
 
 export const mockInviteData: WeddingInviteData = {
-  slug: "melvin-nikitha",
+  slug: "melvin-jona",
   themeId: "kerala-kasavu", // Using Kerala Kasavu for their template
   couple: {
     initials: "M & N",
     partnerOne: "Melvin",
-    partnerTwo: "Nikitha",
+    partnerTwo: "Jona",
     weddingDate: "12th December 2030",
     sealText: "OPEN",
     heroImage: "/hero-image.jpg",
+    heroImage2: "https://images.unsplash.com/photo-1548625361-ec2ebce91d4e?auto=format&fit=crop&q=80&w=1000",
     blessingText: "With the grace of the Almighty & the love of our families",
     invitationNote: "Two lives, two hearts, joined together in friendship, united forever in love. We joyfully request the pleasure of your presence and prayers as we exchange vows and begin our new journey.",
   },
@@ -37,7 +38,7 @@ export const mockInviteData: WeddingInviteData = {
       title: "The Wedding Ceremony",
       date: "Friday, 12th Dec 2030",
       time: "9:30 AM – 11:30 AM",
-      venueName: "St. Mary's Church, Vizhinjam",
+      venueName: "Grand Ballroom, The Leela Palace",
       attireTitle: "Traditional Silk & Elegant Formals",
       attireColors: ["#F7F5EE", "#C5A059", "#4A121A"],
     },

@@ -69,6 +69,12 @@ export default function Itinerary({
           </motion.div>
         ))}
       </div>
+
+      <div className="mt-20 text-center">
+        <h3 className={`font-display text-4xl ${textClass} leading-tight mx-auto max-w-xs uppercase`}>
+          We can't wait to celebrate with you!
+        </h3>
+      </div>
     </section>
   );
 }

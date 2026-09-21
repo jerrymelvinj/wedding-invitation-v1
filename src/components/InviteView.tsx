@@ -87,12 +87,23 @@ export default function InviteView({ data }: InviteViewProps) {
         </AnimatePresence>
 
         <div className={`${!isUnlocked ? "h-screen overflow-hidden" : ""}`}>
+          {/* Header */}
+          <header className="w-full p-6 flex justify-between items-center absolute top-0 left-0 z-30">
+            <span className={`font-display text-2xl tracking-widest ${themeStyles.text}`}>{data.couple.initials}</span>
+            <button className="w-10 h-10 rounded-full bg-[#C5A059] flex flex-col justify-center items-center gap-1.5 shadow-md">
+              <div className="w-4 h-[1.5px] bg-white"></div>
+              <div className="w-4 h-[1.5px] bg-white"></div>
+              <div className="w-4 h-[1.5px] bg-white"></div>
+            </button>
+          </header>
+
           <Hero 
             partnerOne={data.couple.partnerOne}
             partnerTwo={data.couple.partnerTwo}
             blessingText={data.couple.blessingText}
             invitationNote={data.couple.invitationNote}
             heroImage={data.couple.heroImage}
+            heroImage2={data.couple.heroImage2}
             textClass={themeStyles.text}
             accentClass={themeStyles.accent}
             frameClass={themeStyles.heroFrame}

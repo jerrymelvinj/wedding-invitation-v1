@@ -8,6 +8,7 @@ export interface WeddingInviteData {
     weddingDate: string;
     sealText: string;
     heroImage: string;
+    heroImage2?: string;
     blessingText: string;
     invitationNote: string;
   };
