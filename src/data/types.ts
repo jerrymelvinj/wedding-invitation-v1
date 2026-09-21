@@ -9,6 +9,7 @@ export interface WeddingInviteData {
     sealText: string;
     heroImage: string;
     heroImage2?: string;
+    heroVariant?: "arch" | "cutout";
     blessingText: string;
     invitationNote: string;
   };

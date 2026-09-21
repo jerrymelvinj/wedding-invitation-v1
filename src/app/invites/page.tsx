@@ -27,26 +27,26 @@ export default function ShowcasePage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Kerala Kasavu */}
+            {/* Christian Demo */}
             <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center group">
               <div className="w-full aspect-[9/16] bg-[#F7F5EE] rounded-2xl mb-6 overflow-hidden relative shadow-inner border border-gray-200">
-                <img src="https://images.unsplash.com/photo-1610174336214-388a101267f5?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" alt="Kerala Kasavu" />
+                <img src="/hero-image.jpg" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" alt="Christian Wedding" />
               </div>
-              <h3 className="font-display text-2xl mb-2">Kerala Kasavu</h3>
-              <p className="text-xs text-gray-500 mb-6 uppercase tracking-widest">Ivory & Antique Gold</p>
-              <Link href="/demo/kerala-kasavu" className="w-full py-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors text-sm font-semibold">
+              <h3 className="font-display text-2xl mb-2">Christian Edition</h3>
+              <p className="text-xs text-gray-500 mb-6 uppercase tracking-widest">Ivory, Arched Parallax</p>
+              <Link href="/demo/christianity" className="w-full py-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors text-sm font-semibold">
                 View Live Demo
               </Link>
             </div>
 
-            {/* Royal Mewar */}
+            {/* Hindu Demo */}
             <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center group">
               <div className="w-full aspect-[9/16] bg-[#F1E5D8] rounded-2xl mb-6 overflow-hidden relative shadow-inner border border-gray-200">
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" alt="Royal Mewar" />
+                <img src="/temple-sky.jpg" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" alt="Hindu Wedding" />
               </div>
-              <h3 className="font-display text-2xl mb-2">Royal Mewar</h3>
-              <p className="text-xs text-gray-500 mb-6 uppercase tracking-widest">Crimson & Gold Foil</p>
-              <Link href="/demo/royal-mewar" className="w-full py-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors text-sm font-semibold">
+              <h3 className="font-display text-2xl mb-2">Hindu Edition</h3>
+              <p className="text-xs text-gray-500 mb-6 uppercase tracking-widest">Temple Cutout, Rich Text</p>
+              <Link href="/demo/hindu" className="w-full py-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-colors text-sm font-semibold">
                 View Live Demo
               </Link>
             </div>

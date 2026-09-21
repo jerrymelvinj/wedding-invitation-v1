@@ -10,6 +10,7 @@ interface HeroProps {
   invitationNote: string;
   heroImage: string;
   heroImage2?: string;
+  heroVariant?: "arch" | "cutout";
   textClass?: string;
   accentClass?: string;
   frameClass?: string;
@@ -22,6 +23,7 @@ export default function Hero({
   invitationNote,
   heroImage,
   heroImage2,
+  heroVariant = "arch",
   textClass = "text-kumkum",
   accentClass = "text-gold",
   frameClass = "border-cream shadow-[0_20px_40px_-15px_rgba(62,23,27,0.4)]"
@@ -38,6 +40,47 @@ export default function Hero({
 
   // Dual image scroll up transition (slides from 0% to -50% to reveal the second image underneath)
   const dualImageY = useTransform(scrollYProgress, [0, 0.8], ["0%", "-50%"]);
+
+  if (heroVariant === "cutout") {
+    // Cutout / Side Image Layout
+    return (
+      <section ref={containerRef} className="relative min-h-[120vh] flex flex-col pt-32 px-6 overflow-hidden">
+        <motion.div 
+          style={{ y: singleImageY, opacity }}
+          className="absolute top-20 left-0 w-3/5 h-full z-0"
+        >
+          {/* Apply a horizontal gradient mask so the right edge fades smoothly into the text area */}
+          <div className="w-full h-[120%] relative" style={{ WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)', maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)' }}>
+            <img 
+              src={heroImage} 
+              alt="Hero Graphic" 
+              className="w-full h-full object-cover object-left-top"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+          className="text-right z-10 space-y-6 w-1/2 ml-auto mt-10 pr-2"
+        >
+          <p className={`font-sans text-[8px] sm:text-[10px] tracking-[0.2em] uppercase ${textClass}/60 leading-relaxed`}>
+            {blessingText}
+          </p>
+          <h2 className={`font-display text-4xl sm:text-5xl ${textClass} leading-tight flex flex-col items-end`}>
+            <div className="flex items-center gap-2">
+              {partnerOne} <span className={`font-script text-5xl sm:text-6xl ${accentClass}`}>&</span>
+            </div>
+            <span>{partnerTwo}</span>
+          </h2>
+          <p className={`font-sans text-[9px] sm:text-[11px] leading-relaxed tracking-widest ${textClass}/80 uppercase pl-4`}>
+            {invitationNote}
+          </p>
+        </motion.div>
+      </section>
+    );
+  }
 
   return (
     <section ref={containerRef} className="relative min-h-[110vh] flex flex-col items-center pt-32 px-6 overflow-hidden">
