@@ -10,7 +10,7 @@ export const mockInviteData: WeddingInviteData = {
     weddingDate: "12th December 2030",
     sealText: "OPEN",
     heroImage: "/hero-image.jpg",
-    heroImage2: "https://images.unsplash.com/photo-1548625361-ec2ebce91d4e?auto=format&fit=crop&q=80&w=1000",
+    heroImage2: "/cathedral.png",
     blessingText: "With the grace of the Almighty & the love of our families",
     invitationNote: "Two lives, two hearts, joined together in friendship, united forever in love. We joyfully request the pleasure of your presence and prayers as we exchange vows and begin our new journey.",
   },
