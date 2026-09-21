@@ -2,27 +2,49 @@
 
 import { motion } from "framer-motion";
 import { MapPin, CalendarPlus, Music2, VolumeX, MessageCircleHeart } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-import { useRef, useEffect } from "react";
+interface QuickActionDockProps {
+  whatsappNumber: string;
+  rsvpCustomMessage: string;
+  googleMapsUrl: string;
+  calendar: {
+    title: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+  };
+  audioUrl: string;
+  isUnlocked: boolean;
+}
 
-export default function FloatingNav() {
+export default function QuickActionDock({
+  whatsappNumber,
+  rsvpCustomMessage,
+  googleMapsUrl,
+  calendar,
+  audioUrl,
+  isUnlocked,
+}: QuickActionDockProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio("https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3");
-    audioRef.current.loop = true;
-    
-    // Play automatically when component mounts (after unlock)
-    audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+    if (!audioRef.current) {
+      audioRef.current = new Audio(audioUrl);
+      audioRef.current.loop = true;
+    }
+
+    if (isUnlocked) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+    }
 
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
       }
     };
-  }, []);
+  }, [audioUrl, isUnlocked]);
 
   const toggleMusic = () => {
     if (!audioRef.current) return;
@@ -36,22 +58,27 @@ export default function FloatingNav() {
   };
 
   const handleRSVP = () => {
-    window.open("https://wa.me/918248604075?text=Hi%20Melvin%20%26%20Nikitha!%20We%20received%20your%20invitation%20and%20would%20love%20to%20attend%20the%20wedding.%20Guest%20count:%20[2]", '_blank');
+    const encodedMessage = encodeURIComponent(rsvpCustomMessage);
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
 
   const openMap = () => {
-    window.open("https://aadisaktthiresorts.com/", "_blank");
+    window.open(googleMapsUrl, "_blank");
   };
 
   const addToCalendar = () => {
-    window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration+of+Melvin+%26+Nikitha&dates=20301212T040000Z/20301212T173000Z&details=Join+us+to+celebrate+the+union+of+Melvin+and+Nikitha!&location=Bengaluru,+India", "_blank");
+    const { title, startDate, endDate, description } = calendar;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.replace(/[-:]/g, '')}/${endDate.replace(/[-:]/g, '')}&details=${encodeURIComponent(description)}`;
+    window.open(url, "_blank");
   };
+
+  if (!isUnlocked) return null;
 
   return (
     <motion.div 
       initial={{ y: 100 }}
       animate={{ y: 0 }}
-      transition={{ delay: 2, duration: 0.8 }}
+      transition={{ delay: 1.5, duration: 0.8 }}
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 w-[90%] max-w-[380px]"
     >
       {/* Primary RSVP Button inside the floating container but stacked above nav */}
