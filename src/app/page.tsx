@@ -7,12 +7,14 @@ import Hero from "@/components/Hero";
 import TornPaper from "@/components/TornPaper";
 import Itinerary from "@/components/Itinerary";
 import FloatingNav from "@/components/FloatingNav";
+import MobileFrame from "@/components/MobileFrame";
 
 export default function Home() {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   return (
-    <main className="relative bg-sandstone selection:bg-gold/30">
+    <MobileFrame>
+      <main className="relative bg-sandstone selection:bg-gold/30">
       <AnimatePresence>
         {!isUnlocked && (
           <WaxSealOverlay onUnlock={() => setIsUnlocked(true)} />
@@ -27,5 +29,6 @@ export default function Home() {
 
       {isUnlocked && <FloatingNav />}
     </main>
+    </MobileFrame>
   );
 }
