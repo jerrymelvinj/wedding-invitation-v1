@@ -1,6 +1,6 @@
 import InviteView from "@/components/InviteView";
-import { mockKeralaKasavu } from "@/data/mockKeralaKasavu";
+import { mockHindu } from "@/data/mockHindu";
 
-export default function KeralaKasavuDemo() {
-  return <InviteView data={mockKeralaKasavu} />;
+export default function HinduDemo() {
+  return <InviteView data={mockHindu} />;
 }

@@ -1,16 +1,15 @@
 import { WeddingInviteData } from "./types";
 
-export const mockHindu: WeddingInviteData = {
-  slug: "venkat-shobha",
-  themeId: "kerala-kasavu", // We can keep the same theme colors (cream/gold) for Hindu
+export const mockInviteData: WeddingInviteData = {
+  slug: "melvin-jona",
+  themeId: "kerala-kasavu", // Using Kerala Kasavu for their template
   couple: {
-    initials: "V & S",
-    partnerOne: "Venkat",
-    partnerTwo: "Shobha",
-    weddingDate: "15th January 2027",
+    initials: "M & N",
+    partnerOne: "Melvin",
+    partnerTwo: "Jona",
+    weddingDate: "12th December 2030",
     sealText: "OPEN",
-    heroImage: "/temple-sky.jpg",
-    heroVariant: "cutout",
+    heroImage: "/hero-image.jpg",
     blessingText: "With the grace of the Almighty & the love of our families",
     invitationNote: "Two lives, two hearts, joined together in friendship, united forever in love. We joyfully request the pleasure of your presence and prayers as we exchange vows and begin our new journey.",
   },
@@ -53,15 +52,15 @@ export const mockHindu: WeddingInviteData = {
     }
   ],
   links: {
-    whatsappNumber: "910000000000",
-    rsvpCustomMessage: "Hello! We would love to attend.",
-    googleMapsUrl: "https://maps.google.com",
+    whatsappNumber: "918248604075",
+    rsvpCustomMessage: "Hi Melvin & Nikitha! We received your invitation and would love to attend the wedding. Guest count: [2]",
+    googleMapsUrl: "https://aadisaktthiresorts.com/",
     calendar: {
-      title: "Venkat & Shobha Wedding",
-      startDate: "2027-01-15T04:00:00Z",
-      endDate: "2027-01-15T12:00:00Z",
-      description: "Wedding Ceremony",
+      title: "Wedding Celebration of Melvin & Nikitha",
+      startDate: "2030-12-12T04:00:00Z", // 09:30 IST
+      endDate: "2030-12-12T17:30:00Z",   // 23:00 IST
+      description: "Join us to celebrate the union of Melvin and Nikitha!",
     },
-    audioUrl: "https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3",
+    audioUrl: "https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3",
   }
 };
