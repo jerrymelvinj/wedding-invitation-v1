@@ -1,8 +1,31 @@
 "use client";
 
-import InviteView from "@/components/InviteView";
-import { mockInviteData } from "@/data/mockData";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import WaxSealOverlay from "@/components/WaxSealOverlay";
+import Hero from "@/components/Hero";
+import TornPaper from "@/components/TornPaper";
+import Itinerary from "@/components/Itinerary";
+import FloatingNav from "@/components/FloatingNav";
 
 export default function Home() {
-  return <InviteView data={mockInviteData} />;
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  return (
+    <main className="relative bg-sandstone selection:bg-gold/30">
+      <AnimatePresence>
+        {!isUnlocked && (
+          <WaxSealOverlay onUnlock={() => setIsUnlocked(true)} />
+        )}
+      </AnimatePresence>
+
+      <div className={`${!isUnlocked ? "h-screen overflow-hidden" : ""}`}>
+        <Hero />
+        <TornPaper />
+        <Itinerary />
+      </div>
+
+      {isUnlocked && <FloatingNav />}
+    </main>
+  );
 }
